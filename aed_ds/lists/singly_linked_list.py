@@ -88,7 +88,9 @@ class SinglyLinkedList(List):
         if not self.head:
             raise EmptyListException()
         elif self.head == self.tail:
+            result = self.head.get_element()
             self.make_empty()
+            return result
         else:
             old_head = self.head
             self.head = self.head.get_next()
@@ -102,7 +104,7 @@ class SinglyLinkedList(List):
             return self.remove_first()
         elif self.size() == 2:
             self.head.set_next(None)
-            old_node = self.head
+            old_node = self.tail    # tem de ser self.tail
             self.tail = self.head
             self.num_elements -= 1
             return old_node.get_element() 
